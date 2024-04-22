@@ -1,0 +1,165 @@
+package GastosFeria;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+
+public class GastosFeria extends javax.swing.JFrame {
+
+    private static final double PORCENTAJE_ALQUILER = 0.23;
+    private static final double PORCENTAJE_PUBLICIDAD = 0.07;
+    private static final double PORCENTAJE_TRANSPORTE = 0.26;
+    private static final double PORCENTAJE_SERVICIOS = 0.12;
+    private static final double PORCENTAJE_DECORACION = 0.21;
+    private static final double PORCENTAJE_GASTOS_VARIOS = 0.11;    
+
+    public GastosFeria() {
+        initComponents();
+          btnCalcular.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                btnCalcularActionPerformed(e);
+            }
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblMontoTotal = new javax.swing.JLabel();
+        txtMontoTotal = new javax.swing.JTextField();
+        btnCalcular = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaResultados = new javax.swing.JTextArea();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Gastos en la Feria");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblMontoTotal.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblMontoTotal.setText("Monto Total a Invertir:");
+
+        btnCalcular.setBackground(new java.awt.Color(204, 0, 51));
+        btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
+
+        txtAreaResultados.setColumns(20);
+        txtAreaResultados.setRows(5);
+        jScrollPane1.setViewportView(txtAreaResultados);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblMontoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtMontoTotal))
+                            .addComponent(btnCalcular))
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(lblMontoTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCalcular))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 27, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
+       calcularGastosFeria();
+    }                                           
+
+ 
+    private void calcularGastosFeria() {
+        try {
+            double montoTotal = Double.parseDouble(txtMontoTotal.getText());
+            double alquiler = montoTotal * PORCENTAJE_ALQUILER;
+            double publicidad = montoTotal * PORCENTAJE_PUBLICIDAD;
+            double transporte = montoTotal * PORCENTAJE_TRANSPORTE;
+            double serviciosFeria = montoTotal * PORCENTAJE_SERVICIOS;
+            double decoracion = montoTotal * PORCENTAJE_DECORACION;
+            double gastosVarios = montoTotal * PORCENTAJE_GASTOS_VARIOS;
+
+            DecimalFormat df = new DecimalFormat("#.##");
+
+            String resultados = "Gastos en la Feria\n" +
+                    "Alquiler de espacio: S/ " + df.format(alquiler) + "\n" +
+                    "Publicidad: S/ " + df.format(publicidad) + "\n" +
+                    "Transporte: S/ " + df.format(transporte) + "\n" +
+                    "Servicios feriales: S/ " + df.format(serviciosFeria) + "\n" +
+                    "Decoración: S/ " + df.format(decoracion) + "\n" +
+                    "Gastos varios: S/ " + df.format(gastosVarios);
+
+            txtAreaResultados.setText(resultados);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor numérico válido para el monto total a invertir.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GastosFeria().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMontoTotal;
+    private javax.swing.JTextArea txtAreaResultados;
+    private javax.swing.JTextField txtMontoTotal;
+    // End of variables declaration                   
+}
